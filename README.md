@@ -23,11 +23,11 @@ Data provided by [IEX Cloud]( https://iexcloud.io)
 
 ## Architecture
 
-![Architecture](./assets/app-architecture.png)
+![Architecture](./src/assets/app-architecture.png)
 
 ## Table of Contents
 
-* [API Market Data](./data_producer/getMarketData.py)
+* [API Market Data](./src/data_producer/getMarketData.py)
  	
     Performs call to IEX Cloud and Alpha Vantage API to retrieve specified financial data.
 
@@ -37,7 +37,7 @@ Data provided by [IEX Cloud]( https://iexcloud.io)
 	Alpha Vantage is the provider of free APIs for realtime and historical data on stocks, forex (FX), and digital/crypto currencies. More information is available at: <https://www.alphavantage.co/documentation/>
 
 
-* [Econmic Indicators Spider](./data_producer/economic_indicators_spider.py)
+* [Econmic Indicators Spider](./src/data_producer/economic_indicators_spider.py)
  	
 	Extracts economic indicators from Investing.com Economic Calendar. Customizable by specifying countries of interest, importance level and list of events to be considered. Allows to fetch economic indicators such as:
 
@@ -51,13 +51,13 @@ Data provided by [IEX Cloud]( https://iexcloud.io)
 	- New Home Sales
 	- and many others 
 
-* [VIX Spider](./data_producer/vix_spider.py)
+* [VIX Spider](./src/data_producer/vix_spider.py)
  	
 	Extracts VIX data from cnbc.com. 
 	
 	VIX (CBOE Volatility Index) is a calculation designed to produce a measure of constant, 30-day expected volatility of the U.S. stock market, derived from real-time, mid-quote prices of S&P 500® Index (SPXSM) call and put options (<http://www.cboe.com/vix>)
 
-* [COT Reports Spider](./data_producer/cot_reports_spider.py)
+* [COT Reports Spider](./src/data_producer/cot_reports_spider.py)
  	
 	Extracts Commitment of Traders (COT) Reports data from tradingster.com. 
 
@@ -75,7 +75,7 @@ Data provided by [IEX Cloud]( https://iexcloud.io)
     
 	COT reports are most commonly used in long-term trading (weekly, daily time frames)
 
-* [Config](./config.py)
+* [Config](./src/config.py)
  	
 	The configuration file that includes: 
 	- IEX and Alpha Vantage tokens
@@ -89,12 +89,12 @@ Data provided by [IEX Cloud]( https://iexcloud.io)
 		- Specify period and number of standard deviations for Bollinger Bands
 		- Specify Moving Averages periods
 
-* [Data Producer](./data_producer/producer.py)
+* [Data Producer](./src/data_producer/producer.py)
  	
    	The producer instantiates day session and gets the intraday market data from Alpha Vantage and IEX Cloud APIs, it also runs Scrapy Spiders to fetch economic indicators, COT Reports data and VIX. The collected data subsequently creates a set of streams that are published to corresponding Kafka topics.
 
 
-* [Spark Data Consumer](./spark_consumer.py)
+* [Spark Data Consumer](./src/spark_consumer.py)
 
   	The distributed streaming Pyspark application that is responsible for following tasks:
 
@@ -126,7 +126,7 @@ Data provided by [IEX Cloud]( https://iexcloud.io)
 	All unsupported operations are listed here <https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#unsupported-operations>
 
 
-* [Database Initialization](./database/create_database.py)
+* [Database Initialization](./src/database/create_database.py)
 
 	Creates a database to store Spark application data and perform further feature extraction. The following are the created additional features:
 
@@ -146,15 +146,15 @@ Data provided by [IEX Cloud]( https://iexcloud.io)
 	| 8th bar p8_close <= p0_close - (n1 * ATR)   |   0   |   0   |   1   |   0   |
 	| 15th bar p15_close <= p0_close - (n2 * ATR) |   0   |   0   |   0   |   1   |
 
-* [BiGRU Model](./model/biGRU_model.py)
+* [BiGRU Model](./src/model/biGRU_model.py)
 
 	Implementation of the bidirectional Gated Recurrent Unit neural network Pytorch model.
 
-* [Model Training](./model/biGRU_model_training.ipynb)
+* [Model Training](./src/model/biGRU_model_training.ipynb)
 
 	Jupyter notebook showing the process of creating and training the BiGRU model.
 
-* [SQL Pytorch Dataloader](./database/sql_pytorch_dataloader.py)
+* [SQL Pytorch Dataloader](./src/database/sql_pytorch_dataloader.py)
 
 	Implementation of the custom Pytorch Dataset that loads data from MySQL/MariaDB database using MySQLChunkLoader and MySQLBatchLoader. 
 
