@@ -36,7 +36,6 @@ Data provided by [IEX Cloud]( https://iexcloud.io)
 
 	Alpha Vantage is the provider of free APIs for realtime and historical data on stocks, forex (FX), and digital/crypto currencies. More information is available at: <https://www.alphavantage.co/documentation/>
 
-
 * [Econmic Indicators Spider](./src/data_producer/economic_indicators_spider.py)
  	
 	Extracts economic indicators from Investing.com Economic Calendar. Customizable by specifying countries of interest, importance level and list of events to be considered. Allows to fetch economic indicators such as:
@@ -120,11 +119,6 @@ Data provided by [IEX Cloud]( https://iexcloud.io)
 	<http://spark.apache.org/docs/latest/submitting-applications.html#master-urls>
 
 	SPARK STRUCTURED STREAMING LIMITATIONS:
-
-	In Spark Structured Streaming 2.4.4 several operations are not supported on Streaming DataFrames. The most significant constraint pertaining this application is that multiple streaming aggregations (a chain of aggregations on a streaming DataFrame) are not yet supported, thus the feature extraction process that requires multiple window aggregations will be moved from Spark to MariaDB.
-
-	All unsupported operations are listed here <https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#unsupported-operations>
-
 
 * [Database Initialization](./src/database/create_database.py)
 
