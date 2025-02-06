@@ -23,7 +23,7 @@ Data provided by [IEX Cloud]( https://iexcloud.io)
 
 ## Architecture
 
-![Architecture](./src/assets/app-architecture.png)
+![Architecture](./assets/app-architecture.png)
 
 ## Table of Contents
 
