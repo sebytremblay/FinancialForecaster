@@ -1,0 +1,10 @@
+__pycache__
+*.pyc
+*.pyo
+
+myenv/
+jar_files/
+
+.DS_Store
+
+spark
