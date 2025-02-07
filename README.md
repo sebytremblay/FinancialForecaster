@@ -118,8 +118,6 @@ Data provided by [IEX Cloud]( https://iexcloud.io)
 	Other options to run Spark  (locally, on cluster) can be found here:
 	<http://spark.apache.org/docs/latest/submitting-applications.html#master-urls>
 
-	SPARK STRUCTURED STREAMING LIMITATIONS:
-
 * [Database Initialization](./src/database/create_database.py)
 
 	Creates a database to store Spark application data and perform further feature extraction. The following are the created additional features:
@@ -153,8 +151,6 @@ Data provided by [IEX Cloud]( https://iexcloud.io)
 	Implementation of the custom Pytorch Dataset that loads data from MySQL/MariaDB database using MySQLChunkLoader and MySQLBatchLoader. 
 
 	Chunk loader calculates data chunk's normalization parameters which can subsequently be used by MySQLBatchLoader to normalize training batches (according to MIN and MAX of a chunk to which given batch belongs to). Also used to normalize validation and test sets during evaluation or real-time inference.
-
-	The file also includes implementation of the TrainValTestSplit class that performs Train/Validation/Test splitting of a set of data chunks.
 
 * [Predict](./predict.py)
 
